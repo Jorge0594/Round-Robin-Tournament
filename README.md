@@ -57,5 +57,10 @@ For the others columns the table as shown bellow:
 |  Round 6  |  8 - 7  |  1 - 6  |  2 - 5  |  3 - 4  |
 |  Round 7  |  4 - 8  |  5 - 3  |  6 - 2  |  7 - 1  |
 
-
-
+## How to use
+- Create a instance of `TournamentCalendar` class. You must passing three arguments to the constructor of this class:
+    - List of teams names.
+    - Start date of league with following format `dd-MM-yyyy`.
+    - Round size (in days).
+    
+- Call the method `getSchedule` and obtain your tournament schedule.
