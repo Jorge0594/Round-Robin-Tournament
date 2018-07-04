@@ -64,3 +64,8 @@ For the others columns the table as shown bellow:
     - Round size (in days).
     
 - Call the method `getSchedule` and obtain your tournament schedule.
+
+## References
+
+1.https://en.wikipedia.org/wiki/Round-robin_tournament
+2.https://stackoverflow.com/questions/40403467/how-to-match-up-pairs-in-a-round-robin-tournament
