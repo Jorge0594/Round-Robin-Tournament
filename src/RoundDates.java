@@ -68,6 +68,8 @@ public class RoundDates {
                     auxRoundDate = auxRoundDate.plusDays(1);
                 }
 
+                roundDate = auxRoundDate;
+
             }
             roundDate = roundDate.plusDays(7 - roundDuration);
 

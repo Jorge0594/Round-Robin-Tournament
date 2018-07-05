@@ -22,9 +22,9 @@ public class TournamentCalendar {
         this(teamNames.size());
 
         Collections.shuffle(teamNames);
-        Map<Integer, String> teamIdentificators = teamIdentificationAssignment(teamNames);
+        Map<Integer, String> teamIdentification = teamIdentificationAssignment(teamNames);
 
-        replaceIdByNames(teamIdentificators);
+        replaceIdByNames(teamIdentification);
 
         RoundDates roundDates = new RoundDates(startDay, schedule);
         roundDates.generateRoundsDates(roundSize);
