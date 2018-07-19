@@ -1,6 +1,7 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -9,6 +10,7 @@ public class RoundDates {
     private LocalDate initDate;
     private DateTimeFormatter formatter;
     private List<Round> rounds;
+    private List<LocalDate>feastDays;
 
     public RoundDates(String date, String format, List<Round> rounds) {
         formatter = DateTimeFormatter.ofPattern(format);
@@ -22,6 +24,12 @@ public class RoundDates {
         this.rounds = rounds;
     }
 
+    public RoundDates(String date, List<Round> rounds, List<String>feastDays){
+        this(date, rounds);
+
+        this.feastDays = this.feastDaysParser(feastDays);
+    }
+
     public LocalDate getInitDate() {
         return initDate;
     }
@@ -33,16 +41,16 @@ public class RoundDates {
         LocalDate roundDate = initDate;
         int numMatches;
         int it;
-        List<Round> listRounds;
+        List<Round> listMatches;
 
         for (int i = 0; i < roundsByNumber.keySet().size(); i++) {
-            listRounds = roundsByNumber.get(i + 1);
-            numMatches = listRounds.size();
+            listMatches = roundsByNumber.get(i + 1);
+            numMatches = listMatches.size();
 
             it = numMatches / roundDuration;
             if (numMatches % roundDuration == 0) {
 
-                for (Round round : listRounds) {
+                for (Round round : listMatches) {
                     round.setDate(roundDate.format(formatter));
                     it--;
                     if (it == 0) {
@@ -54,27 +62,28 @@ public class RoundDates {
             } else {
                 LocalDate auxRoundDate = roundDate;
 
-                for (int j = 0; j < numMatches / roundDuration; j++) {
-                    listRounds.get(j).setDate(roundDate.format(formatter));
+                for(int j = 0; j < listMatches.size(); j++){
+                    listMatches.get(j).setDate(auxRoundDate.format(formatter));
                     it--;
-                    if (it == 0) {
+                    if(it == 0){
                         it = numMatches / roundDuration;
-                        roundDate = roundDate.plusDays(1);
+                        auxRoundDate = auxRoundDate.equals(roundDate.plusDays(roundDuration - 1)) ? roundDate : auxRoundDate.plusDays(1);
                     }
                 }
 
-                for (int k = numMatches / roundDuration; k < listRounds.size(); k++) {
-                    listRounds.get(k).setDate(auxRoundDate.format(formatter));
-                    auxRoundDate = auxRoundDate.plusDays(1);
-                }
-
-                roundDate = auxRoundDate;
+                roundDate = roundDate.plusDays(roundDuration);
 
             }
             roundDate = roundDate.plusDays(7 - roundDuration);
 
         }
 
+    }
+
+    private List<LocalDate> feastDaysParser(List<String> feastDays){
+        return feastDays.stream()
+                .map(date -> LocalDate.parse(date, formatter))
+                .collect(Collectors.toList());
     }
 
 

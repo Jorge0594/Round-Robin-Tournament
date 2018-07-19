@@ -21,17 +21,31 @@ public class TournamentCalendar {
     public TournamentCalendar(List<String> teamNames, String startDay, int roundSize) {
         this(teamNames.size());
 
-        Collections.shuffle(teamNames);
-        Map<Integer, String> teamIdentification = teamIdentificationAssignment(teamNames);
-
-        replaceIdByNames(teamIdentification);
+        this.preparedRoundTables(teamNames);
 
         RoundDates roundDates = new RoundDates(startDay, schedule);
         roundDates.generateRoundsDates(roundSize);
     }
 
+    public TournamentCalendar(List<String> teamNames, String startDay, int roundSize, List<String>feastDays){
+        this(teamNames.size());
+
+        this.preparedRoundTables(teamNames);
+
+        RoundDates roundDates = new RoundDates(startDay, schedule, feastDays);
+        roundDates.generateRoundsDates(roundSize);
+
+    }
+
     public List<Round> getSchedule() {
         return schedule.stream().filter(s -> s.getLocalTeam() != -1 && s.getVisitorTeam() != -1).sorted().collect(Collectors.toList());
+    }
+
+    private void preparedRoundTables(List<String>teamNames){
+        Collections.shuffle(teamNames);
+        Map<Integer, String> teamIdentification = teamIdentificationAssignment(teamNames);
+
+        replaceIdByNames(teamIdentification);
     }
 
     private List<Round> generateSchedule(int[][] tableLocals, int[][] tableVisitors) {
