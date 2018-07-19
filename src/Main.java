@@ -1,5 +1,4 @@
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,13 +12,13 @@ public class Main {
             teamNames.add("Team" + (i + 1));
         }
 
-        TournamentCalendar calendar = new TournamentCalendar(teamNames, "07-07-2018", 3);
+        List<String>feastDates = Arrays.asList("29-07-2018", "11-08-2018");
+
+        TournamentCalendar calendar = new TournamentCalendar(teamNames, "06-07-2018", 3, feastDates);
 
         List<Round> schedule = calendar.getSchedule();
 
         schedule.forEach(System.out::println);
-
-
     }
 
 }
