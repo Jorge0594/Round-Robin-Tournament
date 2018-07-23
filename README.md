@@ -62,6 +62,7 @@ For the others columns the table as shown bellow:
     - List of teams names.
     - Start date of league with following format `dd-MM-yyyy`.
     - Round size (in days).
+    - (Optional) List with the feast days. In this case the application avoid to create a new round in a feast days contained in the list.
     
 - Call the method `getSchedule` and obtain your tournament schedule.
 
