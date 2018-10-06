@@ -3,7 +3,7 @@ A simple program to create a tournament schedule using Round-robin algorithm
 
 ## How it works
 
-This algorithm is based on construction of pairing tables by Richard Schurig provides a simple way to match the tournament teams. All you need is to generate two like the ones shown below:
+This algorithm is based on construction of pairing tables by Richard Schurig provides a simple way to match the tournament teams. All you need is generate two like the tables that could show below:
 
 For 7 or 8 players, Schurig builds a table with `n / 2` colums and `n - 1`, as follows(Note: Always select the next pair number if the number of players is odd):
 
@@ -43,9 +43,9 @@ And finally, merge the tables:
 |  Round 6  |  8 - 7  |    1    |    2    |    3    |
 |  Round 7  |  4 - 8  |    5    |    6    |    7    |
 
-If the number of players is pair, the last num (in this case the 8) writes alternately from right to left. Otherwise simply ignore this column.
+If the number of players is pair, the last num (in this case 8) is writes alternately from right to left. Otherwise simply ignore this column.
 
-For the others columns the table as shown bellow:
+For the other columns the table as shown bellow:
 
 |  Rounds   | Match 1 | Match 2 | Match 3 | Match 4 |
 | --------- | ------- | ------- | ------- | ------- |
