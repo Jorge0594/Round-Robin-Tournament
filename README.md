@@ -43,7 +43,7 @@ And finally, merge the tables:
 |  Round 6  |  8 - 7  |    1    |    2    |    3    |
 |  Round 7  |  4 - 8  |    5    |    6    |    7    |
 
-If the number of players is pair, the last num (in this case 8) is writes alternately from right to left. Otherwise simply ignore this column.
+If the number of players is pair, the last num (in this case 8) is writed alternately from right to left. Otherwise, simply ignore this column.
 
 For the other columns the table as shown bellow:
 
@@ -58,13 +58,13 @@ For the other columns the table as shown bellow:
 |  Round 7  |  4 - 8  |  5 - 3  |  6 - 2  |  7 - 1  |
 
 ## How to use
-- Create a instance of `TournamentCalendar` class. You must passing three arguments to the constructor of this class:
-    - List of teams names.
-    - Start date of league with following format `dd-MM-yyyy`.
+- Create a instance of `TournamentCalendar` class. You must pass three arguments to the constructor of this class:
+    - A list of teams names.
+    - Start date of league with the following format `dd-MM-yyyy`.
     - Round size (in days).
-    - (Optional) List with the feast days. In this case the application avoid to create a new round in a feast days contained in the list.
+    - (Optional) A list with the feast days. In this case the application avoid to create a new round in a feast days contained in the list.
     
-- Call the method `getSchedule` and obtain your tournament schedule.
+- Call the method `getSchedule` to obtain your tournament schedule.
 
 ## References
 
