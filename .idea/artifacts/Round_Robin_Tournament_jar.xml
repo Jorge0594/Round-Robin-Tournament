@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="Round-Robin-Tournament:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/Round_Robin_Tournament_jar</output-path>
-    <root id="archive" name="Round-Robin-Tournament.jar">
-      <element id="module-output" name="Round-Robin-Tournament" />
-    </root>
-  </artifact>
-</component>
